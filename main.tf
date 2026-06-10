@@ -41,7 +41,8 @@ resource "azurerm_public_ip" "main" {
   name                = "pip-lab"
   location            = azurerm_resource_group.main.location
   resource_group_name = azurerm_resource_group.main.name
-  allocation_method   = "Dynamic"
+  allocation_method   = "Static"    # ← change from Dynamic to Static
+  sku                 = "Standard"  # ← add this line
 }
 
 resource "azurerm_network_interface" "main" {
