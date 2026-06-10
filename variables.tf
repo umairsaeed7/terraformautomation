@@ -3,11 +3,11 @@ variable "resource_group_name" {
 }
 
 variable "location" {
-  default = "East US 2"
+  default = "East US 3"
 }
 
 variable "vm_size" {
-  default = "Standard_DS1_v2"
+  default = "Standard_B1s"
 }
 
 variable "admin_username" {
