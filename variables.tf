@@ -7,7 +7,7 @@ variable "location" {
 }
 
 variable "vm_size" {
-  default = "Standard_B2s"
+  default = "Standard_DS1_v2"
 }
 
 variable "admin_username" {
