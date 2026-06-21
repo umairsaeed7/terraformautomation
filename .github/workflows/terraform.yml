@@ -51,7 +51,6 @@ jobs:
             --output cli \
             --output junitxml \
             --output-file-path console,checkov-report.xml \
-            --soft-fail
         continue-on-error: false
 
       - name: Upload Checkov Report
