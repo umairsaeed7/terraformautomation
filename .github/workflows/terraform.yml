@@ -36,6 +36,31 @@ jobs:
       - name: Terraform Validate
         run: terraform validate
 
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Checkov
+        run: pip install checkov
+
+      - name: Run Checkov Security Scan
+        run: |
+          checkov -d . \
+            --framework terraform \
+            --output cli \
+            --output junitxml \
+            --output-file-path console,checkov-report.xml \
+            --soft-fail
+        continue-on-error: false
+
+      - name: Upload Checkov Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: checkov-report
+          path: checkov-report.xml
+
       - name: Terraform Plan
         run: terraform plan -out=tfplan
 
